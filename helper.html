@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="dns-prefetch" href="https://cdn.toolkit.illinois.edu">
+<link rel="icon" href="https://cdn.brand.illinois.edu/favicon.ico">
+<link rel="stylesheet" href="https://cdn.toolkit.illinois.edu/2.10/toolkit.css" media="all">
+<script src="https://cdn.toolkit.illinois.edu/2.10/toolkit.js"></script>
+<link rel="stylesheet" href="https://cdn.brand.illinois.edu/toolkit/2/toolkit.css" media="all">
+
+<h1>Exchange Helper</h1><br>
+
+<body class="il-formatted">
+<div>
+
+  <label for="resourceaccount">Resource Account: </label>
+    <input type="text" id="resourceaccount"><br><br>
+
+  <label for="distributiongroup">Distribution List: </label>
+    <input type="text" id="distributiongroup"><br><br>
+
+
+<button class="il-button" onclick="myFunction()">Generate Commands</button>
+<button class="il-button" onClick="reset()">Clear</button>
+
+<p id="enablera"></p>
+<p id="enabledg"></p>
+
+<script>
+
+var ra = document.getElementById("resourceaccount").value;
+var dg = document.getElementById('distributiongroup').value;
+var test = "sfollme"
+
+function myFunction() {
+  document.getElementById("enablera").innerHTML = "<b>Enable resource account (black): </b> <br> " + "./enable-onlinemailbox.ps1 " + test;
+  document.getElementById("enabledg").innerHTML = "<b>Enable distribution group (black): </b> <br> " + "enable-distributiongroup " + dg;
+}
+
+function reset() {
+  document.getElementById("enablera").innerHTML = "";
+  document.getElementById("enabledg").innerHTML = "";
+}
+</script>
+
+
+
+</body>
+</html>
