@@ -28,13 +28,13 @@
 
 <script>
 
-var ra = document.getElementById("resourceaccount").value;
+var ra = document.getElementById('resourceaccount').value;
 var dg = document.getElementById('distributiongroup').value;
-var test = "sfollme"
 
 function myFunction() {
-  document.getElementById("enablera").innerHTML = "<b>Enable resource account (black): </b> <br> " + "./enable-onlinemailbox.ps1 " + test;
+  document.getElementById("enablera").innerHTML = "<b>Enable resource account (black): </b> <br> " + "./enable-onlinemailbox.ps1 " + ra;
   document.getElementById("enabledg").innerHTML = "<b>Enable distribution group (black): </b> <br> " + "enable-distributiongroup " + dg;
+
 }
 
 function reset() {
@@ -42,8 +42,6 @@ function reset() {
   document.getElementById("enabledg").innerHTML = "";
 }
 </script>
-
-
 
 </body>
 </html>
