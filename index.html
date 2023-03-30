@@ -1,18 +1,19 @@
 <!DOCTYPE HTML>
 <html>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="dns-prefetch" href="https://cdn.toolkit.illinois.edu">
-<link rel="icon" href="https://cdn.brand.illinois.edu/favicon.ico">
-<link rel="stylesheet" href="https://cdn.toolkit.illinois.edu/2.10/toolkit.css" media="all">
-<script src="https://cdn.toolkit.illinois.edu/2.10/toolkit.js"></script>
-<link rel="stylesheet" href="https://cdn.brand.illinois.edu/toolkit/2/toolkit.css" media="all">
-
-<h1>Exchange Helper</h1><br>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exchange Helper</title>
+  <link rel="dns-prefetch" href="https://cdn.toolkit.illinois.edu">
+  <link rel="icon" href="https://cdn.brand.illinois.edu/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.toolkit.illinois.edu/2.10/toolkit.css" media="all">
+  <script src="https://cdn.toolkit.illinois.edu/2.10/toolkit.js"></script>
+  <link rel="stylesheet" href="https://cdn.brand.illinois.edu/toolkit/2/toolkit.css" media="all">
+</head>
 
 <body class="il-formatted">
+  <h1>Exchange Helper</h1><br>
   <div>
-
     <label for="resourceaccount">Resource Account: </label>
     <input type="text" id="resourceaccount"><br><br>
 
@@ -31,7 +32,6 @@
     <label for="displayname">Display Name: </label>
     <input type="text" id="displayname"><br><br>
 
-
     <button class="il-button il-blue" onclick="myFunction()">Generate Commands</button>
     <button class="il-button il-orange" onClick="reset()">Clear</button>
     <p>Click the command to copy.</p>
@@ -39,41 +39,44 @@
     <p onclick="copy1()" id="enablera"></p>
     <p onclick="copy2()" id="enabledg"></p>
     <p onclick="copy3()" id="setfa"></p>
+    </div>
+    </body>
+
+</html>
 
     <script>
-      function myFunction() {
-        var ra = document.getElementById('resourceaccount').value;
-        var dg = document.getElementById('distributiongroup').value;
-        var fa = document.getElementById('fagroup').value;
-        var sa = document.getElementById('sagroup').value;
-        var psmtp = document.getElementById('primarysmtp').value;
-        var disname = document.getElementById('displayname').value;
+function myFunction() {
+  var ra = document.getElementById('resourceaccount').value;
+  var dg = document.getElementById('distributiongroup').value;
+  var fa = document.getElementById('fagroup').value;
+  var sa = document.getElementById('sagroup').value;
+  var psmtp = document.getElementById('primarysmtp').value;
+  var disname = document.getElementById('displayname').value;
 
-        document.getElementById("enablera").innerHTML = "<h3>Enable accounts</h3><p>(black PowerShell)</p>" + "<p><b>Enable resource account: </b></p> " + ".\\enable-onlinemailbox.ps1 " + ra;
-        document.getElementById("enabledg").innerHTML = "<b>Enable distribution group (black): </b> <br> " + "Enable-DistributionGroup " + dg;
-        document.getElementById("enabledg").innerHTML = "<h3>Set permissions</h3><p>(blue PowerShell, after waiting ~30 min)</p>" + "<p><b>Grant full access: </p></b> " + "Add-MailboxPermission &quot;" + ra + "&quot; -AccessRights FullAccess -user &quot;" +
-          fa + "&quot; -AutoMapping $false";
-      }
+  document.getElementById("enablera").innerHTML = "<h3>Enable accounts</h3><p>(black PowerShell)</p>" + "<p><b>Enable resource account: </b></p> " + ".\\enable-onlinemailbox.ps1 " + ra;
+  document.getElementById("enabledg").innerHTML = "<b>Enable distribution group (black): </b> <br> " + "Enable-DistributionGroup " + dg;
+  document.getElementById("enabledg").innerHTML = "<h3>Set permissions</h3><p>(blue PowerShell, after waiting ~30 min)</p>" + "<p><b>Grant full access: </p></b> " + "Add-MailboxPermission &quot;" + ra + "&quot; -AccessRights FullAccess -user &quot;" + fa + "&quot; -AutoMapping $false";
+}
 
-      function reset() {
-        document.getElementById("enablera").innerHTML = "";
-        document.getElementById("enabledg").innerHTML = "";
-      }
+function reset() {
+  document.getElementById("enablera").innerHTML = "";
+  document.getElementById("enabledg").innerHTML = "";
+}
 
-      function copy1() {
-        var copy = ".\enable-onlinemailbox.ps1 " + document.getElementById('resourceaccount').value;
-        navigator.clipboard.writeText(copy);
-      }
+function copy1() {
+  var copy = ".\\enable-onlinemailbox.ps1 " + document.getElementById('resourceaccount').value;
+  navigator.clipboard.writeText(copy);
+}
 
-      function copy2() {
-        var copy = "Enable-DistributionGroup " + document.getElementById('distributiongroup').value;
-        navigator.clipboard.writeText(copy);
-      }
+function copy2() {
+  var copy = "Enable-DistributionGroup " + document.getElementById('distributiongroup').value;
+  navigator.clipboard.writeText(copy);
+}
 
-      function copy3() {
-        var copy = "Add-MailboxPermission &quot;" + document.getElementById('resourceaccount').value + "&quot; -AccessRights FullAccess -user &quot;" + document.getElementById('fagroup').value + "&quot; -AutoMapping $false";
-        navigator.clipboard.writeText(copy);
-      }
+function copy3() {
+  var copy = "Add-MailboxPermission &quot;" + document.getElementById('resourceaccount').value + "&quot; -AccessRights FullAccess -user &quot;" + document.getElementById('fagroup').value + "&quot; -AutoMapping $false";
+  navigator.clipboard.writeText(copy);
+}
     </script>
 
 </body>
